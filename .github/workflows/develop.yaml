@@ -32,7 +32,7 @@ jobs:
           cache: true
 
       - name: Format files
-        run: dart format $(find . -name "*.dart" -not -wholename "*/generated/*" -not -name "*.mocks.dart" -not -wholename "./.dart_tool/*") -l 120 --set-exit-if-changed
+        run: dart format .
 
       - name: Install Flutter dependencies
         run: flutter pub get

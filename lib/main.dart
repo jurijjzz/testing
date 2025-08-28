@@ -18,13 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue[900],
         appBarTheme: AppBarTheme(
-        backgroundColor: Colors.blue[900],
+          backgroundColor: Colors.blue[900],
           foregroundColor: Colors.white,
         ),
       ),
       home: BlocProvider<NotificationCubit>(
-        create: (BuildContext context) => NotificationCubit(NotificationRepository())
-          ..loadNotifications(),
+        create: (BuildContext context) => NotificationCubit(NotificationRepository())..loadNotifications(),
         child: const NotificationOverviewPage(),
       ),
     );

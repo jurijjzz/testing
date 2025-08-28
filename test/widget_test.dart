@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-
 class MockNotificationCubit extends Mock implements NotificationCubit {}
 
 void main() {
@@ -99,7 +98,5 @@ void main() {
       expect(find.text('Pak op'), findsNothing);
       expect(find.text('Afronden'), findsNothing);
     });
-
-
   });
 }

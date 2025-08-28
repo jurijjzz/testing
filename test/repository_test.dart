@@ -27,8 +27,9 @@ void main() {
       await repository.updateStatus(firstNotification.id, NotificationStatus.meeBezig);
 
       final List<Notification> updatedNotifications = await repository.getNotifications();
-      final Notification updatedNotification = updatedNotifications
-          .firstWhere((Notification n) => n.id == firstNotification.id);
+      final Notification updatedNotification = updatedNotifications.firstWhere(
+        (Notification n) => n.id == firstNotification.id,
+      );
 
       expect(updatedNotification.status, NotificationStatus.meeBezig);
     });
@@ -36,7 +37,7 @@ void main() {
     test('should not update non-existent notification', () async {
       // Should not throw error when updating non-existent notification
       expect(
-            () => repository.updateStatus('non-existent', NotificationStatus.meeBezig),
+        () => repository.updateStatus('non-existent', NotificationStatus.meeBezig),
         returnsNormally,
       );
     });
