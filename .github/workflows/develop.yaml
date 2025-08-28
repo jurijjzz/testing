@@ -1,0 +1,44 @@
+name: Build master
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+# This ensures that previous jobs for the PR are canceled when the PR is
+# updated.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Flutter App
+    runs-on: ubuntu-latest
+
+    env:
+      source-directory: ./
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Make sure the stable version of Flutter is available
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          # use the build-in cache from Subosito to cache flutter and pubspec.lock
+          cache: true
+
+      - name: Format files
+        run: dart format $(find . -name "*.dart" -not -wholename "*/generated/*" -not -name "*.mocks.dart" -not -wholename "./.dart_tool/*") -l 120 --set-exit-if-changed
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Analyze files
+        run: flutter analyze --no-fatal-warnings
+
+      - name: Run tests
+        run: flutter test
