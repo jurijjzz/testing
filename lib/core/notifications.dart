@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 
 enum NotificationStatus { openstaand, meeBezig, afgerond }
 
-class Notification extends Equatable {
-  const Notification({
+class WorkNotifications extends Equatable {
+  const WorkNotifications({
     required this.id,
     required this.title,
     required this.description,
@@ -19,8 +19,8 @@ class Notification extends Equatable {
   final DateTime timestamp;
   final NotificationStatus status;
 
-  Notification copyWith({NotificationStatus? status}) {
-    return Notification(
+  WorkNotifications copyWith({NotificationStatus? status}) {
+    return WorkNotifications(
       id: id,
       title: title,
       description: description,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/notifications.dart';
@@ -7,7 +7,7 @@ import '../cubit/notification_cubit.dart';
 class NotificationDetailPage extends StatelessWidget {
   const NotificationDetailPage(this.notification, {super.key});
 
-  final Notification notification;
+  final WorkNotifications notification;
 
   @override
   Widget build(BuildContext context) {

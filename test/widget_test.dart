@@ -1,7 +1,7 @@
 import 'package:adapta_test/core/notifications.dart';
 import 'package:adapta_test/ui/cubit/notification_cubit.dart';
 import 'package:adapta_test/ui/pages/notification_detail_page.dart';
-import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -20,7 +20,7 @@ void main() {
       mockCubit = MockNotificationCubit();
     });
 
-    Widget createTestWidget(Notification notification) {
+    Widget createTestWidget(WorkNotifications notification) {
       return MaterialApp(
         home: BlocProvider<NotificationCubit>(
           create: (_) => mockCubit,
@@ -30,7 +30,7 @@ void main() {
     }
 
     testWidgets('displays basic notification info', (WidgetTester tester) async {
-      final Notification notification = Notification(
+      final WorkNotifications notification = WorkNotifications(
         id: '1',
         title: 'Test Title',
         description: 'Test Description',
@@ -48,7 +48,7 @@ void main() {
     });
 
     testWidgets('shows pak op button for openstaand notification', (WidgetTester tester) async {
-      final Notification notification = Notification(
+      final WorkNotifications notification = WorkNotifications(
         id: '1',
         title: 'Test',
         description: 'Test',
@@ -65,7 +65,7 @@ void main() {
     });
 
     testWidgets('shows afronden button for meeBezig notification', (WidgetTester tester) async {
-      final Notification notification = Notification(
+      final WorkNotifications notification = WorkNotifications(
         id: '1',
         title: 'Test',
         description: 'Test',
@@ -82,7 +82,7 @@ void main() {
     });
 
     testWidgets('shows completed status for afgerond notification', (WidgetTester tester) async {
-      final Notification notification = Notification(
+      final WorkNotifications notification = WorkNotifications(
         id: '1',
         title: 'Test',
         description: 'Test',

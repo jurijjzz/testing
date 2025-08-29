@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/material.dart';
 
 import '../../core/notifications.dart';
 
@@ -9,7 +9,7 @@ class NotificationCard extends StatelessWidget {
     super.key,
   });
 
-  final Notification notification;
+  final WorkNotifications notification;
   final VoidCallback onTap;
 
   @override

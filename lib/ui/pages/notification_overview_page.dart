@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/notifications.dart';
@@ -79,7 +79,7 @@ class NotificationOverviewPage extends StatelessWidget {
               );
             }
 
-            final List<Notification> notifications = state.filteredNotifications;
+            final List<WorkNotifications> notifications = state.filteredNotifications;
 
             if (notifications.isEmpty) {
               return Center(
@@ -92,7 +92,7 @@ class NotificationOverviewPage extends StatelessWidget {
               child: ListView.builder(
                 itemCount: notifications.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final Notification notification = notifications[index];
+                  final WorkNotifications notification = notifications[index];
                   return NotificationCard(
                     notification: notification,
                     onTap: () => _navigateToDetail(context, notification),
@@ -183,7 +183,7 @@ class NotificationOverviewPage extends StatelessWidget {
     }
   }
 
-  void _navigateToDetail(BuildContext context, Notification notification) {
+  void _navigateToDetail(BuildContext context, WorkNotifications notification) {
     Navigator.push(
       context,
       MaterialPageRoute(

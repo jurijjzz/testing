@@ -11,7 +11,7 @@ class NotificationCubit extends Cubit<NotificationState> {
   Future<void> loadNotifications() async {
     emit(state.copyWith(isLoading: true));
     try {
-      final List<Notification> notifications = await repository.getNotifications();
+      final List<WorkNotifications> notifications = await repository.getNotifications();
       emit(state.copyWith(notifications: notifications, isLoading: false));
     } catch (e) {
       emit(state.copyWith(isLoading: false, error: e.toString()));
@@ -26,7 +26,7 @@ class NotificationCubit extends Cubit<NotificationState> {
     try {
       await repository.updateStatus(id, newStatus);
 
-      final List<Notification> updatedNotifications = state.notifications.map((Notification notification) {
+      final List<WorkNotifications> updatedNotifications = state.notifications.map((WorkNotifications notification) {
         if (notification.id == id) {
           return notification.copyWith(status: newStatus);
         }
